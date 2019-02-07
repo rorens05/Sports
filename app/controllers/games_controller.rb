@@ -12,6 +12,18 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @contestants = ContestantTeam.where(game_id: @game.id).order("score DESC")
+    @ranks = Array.new
+    rank = 1
+    for  x  in 0..(@contestants.size - 1)
+      if @ranks.size > 0 && @contestants[x].score == @contestants[x - 1].score
+        @ranks << @ranks[x - 1]
+      else
+        @ranks << rank
+      end
+      rank = rank + 1
+      puts @ranks[x]
+    end
   end
 
   # GET /games/new
@@ -74,6 +86,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :game_type, :sport_id, :schedule, contestant_teams_attributes: [:id, :team_id, :score])
+      params.require(:game).permit(:name, :game_type, :sport_id, :schedule, :event_id, contestant_teams_attributes: [:id, :team_id, :score])
     end
 end

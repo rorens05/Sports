@@ -1,12 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @team.name %></h1><hr>
+<div class="team-image-container">
+  <%= render partial: 'layouts/render_image', locals: {image: @team.logo} %>
+</div>
+
+<h1 class="team-name"><%= @team.name %></h1><hr>
 
 <p>
   <strong>Sport:</strong>
   <%= @team.sport.name %>
 </p>
-
 <p>
   <strong>Event:</strong>
   <%= @team.event.name %>
@@ -47,4 +50,5 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table><br>
+<%= link_to 'New Player', new_player_path(team_id: @team.id), class: 'btn btn-primary' %>

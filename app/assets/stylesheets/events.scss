@@ -7,3 +7,64 @@
     width: 50px;
   }
 }
+
+.clear-fix{
+  width: 100%;
+  overflow: auto;
+  padding: 0 0 20px 0;
+  float: left;
+}
+
+.games-container{
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 3px 3px 2px gray;
+  border: 1px solid rgb(196, 196, 196);
+  float: left;
+  margin-right: 10px;
+  .teams{
+    width:300px;
+    border-right: 1px solid gray;
+    float: left;
+  }
+
+  .details{
+    width: 90px;
+    float: left;
+    text-align: center;
+    p{
+      line-height: 100%;
+    }
+    .game-type{
+      margin-top: 2em;
+      font-size: 15px;
+    }
+    .date{
+      margin-top: 0px;
+      color: rgb(65, 65, 65);
+    }
+  }
+
+  .lose{
+    p, span, a{
+      color: rgb(143, 143, 143) !important;
+    }
+  }
+  
+  img{
+    width:30px;
+    height: 30px;
+    margin: 15px 5px 15px 15px;
+  }
+  span{
+    float: right;
+    font-size: 20px;
+    margin:  15px 15px 15px 15px;
+  }
+  p{
+    font-size: 14px;
+  }
+  .team-score{
+    border-bottom: 1px solid rgb(179, 179, 179)
+  }
+}

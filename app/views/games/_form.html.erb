@@ -17,13 +17,18 @@
   </div>
 
   <div class="field">
+    <%= form.label :event_id %>
+    <%= form.select :event_id, options_from_collection_for_select(Event.all, 'id', 'name', form.object.event ? form.object.event.id : 1) %>
+  </div>
+
+  <div class="field">
     <%= form.label :game_type %>
     <%= form.text_field :game_type %>
   </div>
 
   <div class="field">
     <%= form.label :sport_id %>
-    <%= form.number_field :sport_id %>
+    <%= form.select :sport_id, options_from_collection_for_select(Sport.all, 'id', 'name', form.object.sport ? form.object.sport.id : 1) %>
   </div>
 
   <div class="field">
@@ -36,7 +41,7 @@
     <%= form.fields_for :contestant_teams do |ctf| %>
       <li>
         <%= ctf.label :team_id %>
-        <%= ctf.text_field :team_id %>
+        <%= ctf.select :team_id, options_from_collection_for_select(Team.where(sport_id: form.object.sport_id, event_id: form.object.event_id), 'id', 'name', ctf.object.team_id || 1) %>
         <%= ctf.label :score %>
         <%= ctf.text_field :score %>
       </li>

@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
   <%= @game.name %>
+</h1><hr>
+
+<p>
+  <strong>Event:</strong>
+  <%= @game.event.name %>
 </p>
 
 <p>
@@ -12,13 +16,34 @@
 
 <p>
   <strong>Sport:</strong>
-  <%= @game.sport_id %>
+  <%= @game.sport.name %>
 </p>
 
 <p>
   <strong>Schedule:</strong>
-  <%= @game.schedule %>
+  <%= format_time(@game.schedule) %>
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %>
+
+<hr>
+<h1>Game Players</h1><br>
+
+<table>
+  <thead>
+    <th>Team</th>
+    <th>Score</th>
+    <th>Status</th>
+  </thead>
+
+  <% for  x  in 0..(@contestants.size - 1) %>
+    <tr>
+      <td><%= link_to @contestants[x].team.name, @contestants[x].team %></td>
+      <td><%= @contestants[x].score %></td>
+      <td><%= display_winner(@ranks[x]) %></td>
+    </tr>
+  <% end %>
+  
+</table>
+

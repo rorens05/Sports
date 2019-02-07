@@ -21,22 +21,55 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %><hr>
+
+<h1>Games</h1><br>
+
+  <div class="clear-fix">
+    <% @games.each do |game| %>
+        <div class="games-container">
+          <div class="teams">
+            <% counter = 1%>
+            <% game.contestant_teams.order("score DESC").each do |ct| %>
+              <div class="team-score <%= counter > 1 ? "lose" : "" %>"> <% counter = counter + 1 %>                   
+                <%= render partial: '/layouts/render_image', locals: {image: ct.team.logo} %>
+                <p class="team-name"><%= link_to ct.team.name, ct.team %> </p><span><%= ct.score %></span>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="details">
+            <p class="game-type">finals</p>
+            <p class="date">January 10, 2018</p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+
+  
+
+
+<br><br>
+
 <h1>Teams</h1><br>
 
 <table>
   <thead>
-    <th style="width: 30%;">Sport</th>
+    <th style="width: 15%;">Sport</th>
     <th>Teams</th>
   </thead>
     <% Sport.all.each do |sport| %>
-      <tr>
-        <td><h5 class="event-sports"><%= render partial: 'layouts/render_image', locals: {image: sport.logo} %><br><%= sport.name %></h5></td>
-        <td>
+
+      <% if sport.teams.count > 0 %>
+        <tr>
+          <td><h5 class="event-sports"><%= render partial: 'layouts/render_image', locals: {image: sport.logo} %><br><%= sport.name %></h5></td>
+        
+          <td>
             <% Team.all.where(sport_id: sport.id).where(event_id: @event.id).each do |team| %>
               <li class="list-group-item"><%= link_to team.name, team %></li>
             <% end %>
-        </td>
-      </tr>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
 </table>
 

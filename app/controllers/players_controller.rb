@@ -17,6 +17,9 @@ class PlayersController < ApplicationController
   # GET /players/new
   def new
     @player = Player.new
+    if params[:team_id]
+      @player.team_id = params[:team_id].to_i
+    end
   end
 
   # GET /players/1/edit
