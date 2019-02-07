@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  game_type: MyString
+  sport_id: 1
+  schedule: 2019-02-07 08:27:51
+
+two:
+  name: MyString
+  game_type: MyString
+  sport_id: 1
+  schedule: 2019-02-07 08:27:51

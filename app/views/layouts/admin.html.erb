@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= controller_name.capitalize %> | Admin</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="icon" href="/images/logo.png">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+
+    <!-- sidebar -->
+    <div class="sidebar">
+      <img class="logo" src="/images/logo.png" alt="PSU">
+      <p>PSU Sports Management System</p>
+
+      <ul>
+        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+        <li><a href="/events"><i class="fas fa-calendar-alt"></i>Events</a></li>
+        <li><a href="/sports"><i class="fas fa-basketball-ball"></i>Sports</a></li>
+        <li><a href="/teams"><i class="fas fa-users"></i>Teams</a></li>
+        <li><a href="/players"><i class="fas fa-user-ninja"></i>Players</a></li>
+        <li><a href="/games"><i class="fas fa-flag-checkered"></i>Games</a></li>
+        <li><a href="/admins"><i class="fas fa-user"></i>Admin</a></li>
+        <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        
+      </ul>
+    </div>
+
+    <!-- content -->
+    <div class="content">
+      <div class="header-background"></div>
+      
+
+      <div class="container-fluid content-padding">
+
+        <div class="header">
+          <h5><%= controller_name.upcase %></h5>
+          <div class="admin-name">        
+            <p class=""><img src="/images/admin.png" alt="PSU">Admin</p>  
+            
+          </div>
+        </div>
+
+        <div class="jumbotron body">
+          <%= yield %>
+        </div>
+      </div>
+      
+    </div>
+
+  </body>
+</html>

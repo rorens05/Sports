@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Contestant Teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Score</th>
+      <th>Game</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contestant_teams.each do |contestant_team| %>
+      <tr>
+        <td><%= contestant_team.team_id %></td>
+        <td><%= contestant_team.score %></td>
+        <td><%= contestant_team.game_id %></td>
+        <td><%= link_to 'Show', contestant_team %></td>
+        <td><%= link_to 'Edit', edit_contestant_team_path(contestant_team) %></td>
+        <td><%= link_to 'Destroy', contestant_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Contestant Team', new_contestant_team_path %>

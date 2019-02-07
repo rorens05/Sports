@@ -1,0 +1,149 @@
+
+$sidebar-width : 250px;
+$primary-color : #613aff;
+$gray : #d3d3d3;
+.box{
+  border:1px dotted red;
+}
+
+body{
+  margin: 0 !important;
+  margin-top: -15px !important;
+  padding: 0 !important;
+  background-color: #dddddd !important;
+}
+
+html{
+}
+
+
+.sidebar{
+  width: $sidebar-width;
+  height: 100%;
+  position: fixed;
+  margin: 0 !important;
+  padding-top: 30px; 
+  background-color: white !important;
+
+  .logo{
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  p{
+    margin-top: 10px;
+    font-size: 30px;
+    line-height: 100%;
+    color: $primary-color;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  ul{
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    
+    a{
+      display: block;
+      width: 100%;
+      color: rgb(99, 99, 99) !important;
+      padding: 10px 20px;
+
+      &:hover{
+        text-decoration: none;
+        color: white !important;
+        background-color: #613aff
+      }
+      i{
+        width: 50px;
+        display: inline-block;
+      }
+    }    
+  }
+}
+
+.content{
+  margin-left: $sidebar-width;
+  position: relative;
+  background-color: transparent !important;
+  
+  h1{
+    font-size: 30px;
+  }
+
+  .content-padding{
+    padding: 50px 25px;
+  }
+
+  .header-background{
+    width: 100%;
+    height: 300px;
+    background-color: $primary-color;
+    z-index: -1;
+    position: absolute;
+    
+  }
+
+  .header{
+    overflow: auto;
+
+    h5{
+      color: white;
+      font-weight: bold;
+      float: left;
+    }  
+
+    .admin-name{
+      color: white;
+      float: right;
+
+      img{
+        width: 40px;
+        height: 40px;
+        border-radius: 25px;
+        border: 2px solid rgb(192, 192, 192);
+      }
+      p{
+        font-weight: bold;
+      }
+    }
+
+  }
+
+  .body{
+    margin-top: 40px !important;
+    padding: 5px 20px 20px 20px !important;
+    background-color: white !important;
+    overflow: auto;
+  }
+
+  table{
+    width: 100%;
+    thead{
+      background-color: #F6F9FC;
+      color: #8898AA;
+      border-bottom: 1px solid $gray;
+      th{
+        font-weight: normal;
+      }
+    }
+    td{
+      padding: 1em;
+      border-bottom: 1px solid $gray;
+      color: #010036f8 !important;
+      a{
+        color: #8700bdf8 !important
+      }
+      img{
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        border: 1px solid white;
+        margin-right: 20px;
+      }
+    }
+  }
+}

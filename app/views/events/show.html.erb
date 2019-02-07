@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<h1>
+  <%= @event.name %><hr>
+</h1>
+
+<p>
+  <strong>Event date:</strong>
+  <%= @event.event_date %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @event.venue %>
+</p>
+
+<p>
+  <strong>Organizer:</strong>
+  <%= @event.organizer %>
+</p>
+
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %><hr>
+<h1>Teams</h1><br>
+
+<table>
+  <thead>
+    <th style="width: 30%;">Sport</th>
+    <th>Teams</th>
+  </thead>
+    <% Sport.all.each do |sport| %>
+      <tr>
+        <td><h5 class="event-sports"><%= render partial: 'layouts/render_image', locals: {image: sport.logo} %><br><%= sport.name %></h5></td>
+        <td>
+            <% Team.all.where(sport_id: sport.id).where(event_id: @event.id).each do |team| %>
+              <li class="list-group-item"><%= link_to team.name, team %></li>
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+</table>
+
+
+
