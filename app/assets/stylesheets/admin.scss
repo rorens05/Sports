@@ -16,6 +16,21 @@ body{
 html{
 }
 
+.toggle{
+  color: white !important;
+  font-size: 25px;
+  background-color: $primary-color;
+  border-radius: 3px;
+  border: 2px solid rgb(201, 201, 201);
+}
+
+.hidden{
+  display:none;
+}
+
+.fullscreen{
+  margin-left: 0 !important;
+}
 
 .sidebar{
   width: $sidebar-width;

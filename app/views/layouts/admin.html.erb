@@ -4,6 +4,8 @@
     <title><%= controller_name.capitalize %> | Admin</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <link rel="icon" href="/images/logo.png">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -36,7 +38,8 @@
       <div class="container-fluid content-padding">
 
         <div class="header">
-          <h5><%= controller_name.upcase %></h5>
+          
+          <h5><button class="toggle" >≡</button> <span class="controller-name"><%= controller_name.upcase %></span></h5>
           <div class="admin-name">        
             <p class=""><img src="/images/admin.png" alt="PSU">Admin</p>  
             
@@ -47,7 +50,7 @@
           <%= yield %>
         </div>
       </div>
-      
+        
     </div>
 
   </body>
