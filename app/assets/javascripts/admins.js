@@ -17,9 +17,12 @@ $( document ).ready(function() {
   $(".toggle").click(function(){
     $(".sidebar").toggleClass("hidden");
     $(".content").toggleClass("fullscreen");
-    $(".admin-name").toggleClass("hidden");;
-    $(".controller-name").toggleClass("hidden");
-    $(".body").toggleClass("hidden");
+    
+    if ($(window).width() < 514) {
+      $(".admin-name").toggleClass("hidden");;
+      $(".controller-name").toggleClass("hidden");
+      $(".body").toggleClass("hidden");
+    }
     console.log("toggled");
   });
 });
