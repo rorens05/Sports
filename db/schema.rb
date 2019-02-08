@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_02_07_153337) do
 
-  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_153337) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "active_storage_blobs", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -33,13 +36,13 @@ ActiveRecord::Schema.define(version: 2019_02_07_153337) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "admins", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "contestant_teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "contestant_teams", force: :cascade do |t|
     t.integer "team_id"
     t.integer "score"
     t.integer "game_id"
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_153337) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.string "name"
     t.date "event_date"
     t.string "venue"
@@ -56,17 +59,17 @@ ActiveRecord::Schema.define(version: 2019_02_07_153337) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "games", force: :cascade do |t|
     t.string "name"
     t.string "game_type"
     t.integer "sport_id"
-    t.timestamp "schedule"
+    t.datetime "schedule"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "event_id"
   end
 
-  create_table "players", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "players", force: :cascade do |t|
     t.string "name"
     t.string "contact_no"
     t.string "address"
@@ -78,14 +81,14 @@ ActiveRecord::Schema.define(version: 2019_02_07_153337) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "sports", force: :cascade do |t|
     t.string "name"
     t.string "game_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "teams", force: :cascade do |t|
     t.string "name"
     t.integer "sport_id"
     t.integer "event_id"
