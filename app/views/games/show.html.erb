@@ -25,7 +25,8 @@
 </p>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |
-<%= link_to 'Back', games_path %>
+<%= link_to 'Back', games_path %> | 
+<%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <hr>
 <h1>Game Players</h1><br>
@@ -38,11 +39,19 @@
   </thead>
 
   <% for  x  in 0..(@contestants.size - 1) %>
-    <tr>
-      <td><%= link_to @contestants[x].team.name, @contestants[x].team %></td>
-      <td><%= @contestants[x].score %></td>
-      <td><%= display_winner(@ranks[x]) %></td>
-    </tr>
+    <% if @contestants[x].team %>
+      <tr>
+        <td><%= link_to @contestants[x].team.name, @contestants[x].team %></td>
+        <td><%= @contestants[x].score %></td>
+        <td><%= display_winner(@ranks[x]) %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td><span style="color: gray">DELETED</span></td>
+        <td><%= @contestants[x].score %></td>
+        <td><%= display_winner(@ranks[x]) %></td>
+      </tr>
+    <% end %>
   <% end %>
   
 </table>

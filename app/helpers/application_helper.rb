@@ -1,6 +1,6 @@
 module ApplicationHelper
   def format_time(time)
-    return time.strftime("%b %e, %Y - %l:%M %p")
+    return time.strftime("%b %e, %Y  %l:%M %p")
   end
 
   def display_winner(rank)
@@ -8,6 +8,18 @@ module ApplicationHelper
       return rank.to_s + " (Winner)"
     else
       return rank
+    end
+  end
+
+  def limit_string(name, num)
+    name[0..num].gsub(/\s\w+\s*$/, '...')
+  end
+
+  def validate_image(image)
+    if image.attachment.present?
+      image
+    else
+      "/images/no-image-icon-11.PNG"
     end
   end
 end

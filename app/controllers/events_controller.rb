@@ -13,7 +13,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @games = Game.where(event_id: @event.id)
+    @games = Game.where(event_id: @event.id).order("schedule DESC")
+    @game = Game.new(event_id: @event.id)
+    @team = Team.new(event_id: @event.id)
+    
+
+    2.times{
+      @game.contestant_teams.build
+    }
   end
 
   # GET /events/new

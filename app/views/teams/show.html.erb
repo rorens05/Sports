@@ -16,8 +16,8 @@
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %><hr>
-<h1>Players</h1><br>
+<%= link_to 'Back', teams_path %> | <%= link_to 'Destroy', @team, method: :delete, data: { confirm: 'Are you sure?' } %>
+<hr><h1>Players</h1><br>
 
 
 <table>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= render partial: 'layouts/render_image', locals: {image: @sport.logo} %>
+<%= image_tag validate_image(@sport.logo),class: 'sports-image-show' %>
 
 <p>
   <strong>Name:</strong>

@@ -13,6 +13,7 @@
   overflow: auto;
   padding: 0 0 20px 0;
   float: left;
+  margin-top: 5px;
 }
 
 .games-container{
@@ -71,4 +72,87 @@
   .team-score{
     border-bottom: 1px solid rgb(179, 179, 179)
   }
+}
+
+
+label{
+  display: block;
+  width: 100%;
+}
+
+input[type="text"],input[type="number"]{
+  width: 100%;
+  padding: 4px;
+  border: 1px solid rgb(201, 201, 201);
+}
+
+input[type="submit"]{
+  width: 100%;
+  max-width: 300px;;
+  padding: 4px;
+  border: 1px solid rgb(201, 201, 201);
+  margin: 0 auto;
+}
+
+.actions{
+  text-align: right;;
+}
+
+select{
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid rgb(201, 201, 201);
+}
+
+#game_schedule_1i,#game_schedule_2i,#game_schedule_3i,#game_schedule_4i,#game_schedule_5i{
+  width: auto;
+}
+
+input[type="file"]{
+  width: 100%;
+  padding: 4px;
+  border: 1px solid rgb(201, 201, 201);
+}
+
+table{
+  margin-top: 5px;
+}
+
+
+
+@media screen and (max-width: 600px) {
+  .teams{
+    width:100%;
+    border-right: 1px solid white !important;
+  }
+  .team-score{
+    width: 100%;
+
+    border-right: 1px solid white;
+  }
+
+  .games-container{
+
+    .teams{
+      width:100%;
+    }
+  }
+
+  .details{
+    width: 100% !important;
+    float: none;
+    text-align: center;
+    p{
+      line-height: 100%;
+    }
+    .game-type{
+      margin-top: 2em;
+      font-size: 15px;
+    }
+    .date{
+      margin-top: 0px;
+      color: rgb(65, 65, 65);
+    }
+  }
+
 }
