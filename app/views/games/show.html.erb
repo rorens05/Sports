@@ -24,6 +24,17 @@
   <%= format_time(@game.schedule) %>
 </p>
 
+<p>
+  <strong>Created by:</strong>
+  <%= @game.created_by.username %>
+</p>
+<p>
+  <strong>Last Updated By:</strong>
+  <% if true %>
+    <%= @game.last_updated_by.username %>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %> | 
 <%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %>
