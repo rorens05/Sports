@@ -26,11 +26,14 @@
 
 <p>
   <strong>Created by:</strong>
-  <%= @game.created_by.username %>
+  <% if @game.created_by %>
+    <%= @game.created_by.username %>
+  <% end %>
 </p>
+
 <p>
   <strong>Last Updated By:</strong>
-  <% if true %>
+  <% if @game.last_updated_by %>
     <%= @game.last_updated_by.username %>
   <% end %>
 </p>

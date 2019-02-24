@@ -18,15 +18,16 @@
       <p>PSU Sports Management System</p>
 
       <ul>
-        <li><a href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
-        <li><a href="/events"><i class="fas fa-calendar-alt"></i>Events</a></li>
-        <li><a href="/sports"><i class="fas fa-basketball-ball"></i>Sports</a></li>
-        <li><a href="/teams"><i class="fas fa-users"></i>Teams</a></li>
-        <li><a href="/players"><i class="fas fa-user-ninja"></i>Players</a></li>
-        <li><a href="/games"><i class="fas fa-flag-checkered"></i>Games</a></li>
-        <li><a href="/admins"><i class="fas fa-user"></i>Admin</a></li>
-        <li><a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
+        <li><a class='<%= check_active('dashboard') %>' href="#"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+        <li><a class='<%= check_active('events') %>' href="/events"><i class="fas fa-calendar-alt"></i>Events</a></li>
+        <li><a class='<%= check_active('sports') %>' href="/sports"><i class="fas fa-basketball-ball"></i>Sports</a></li>
+        <li><a class='<%= check_active('teams') %>' href="/teams"><i class="fas fa-users"></i>Teams</a></li>
+        <li><a class='<%= check_active('players') %>' href="/players"><i class="fas fa-user-ninja"></i>Players</a></li>
+        <li><a class='<%= check_active('games') %>' href="/games"><i class="fas fa-flag-checkered"></i>Games</a></li>
+        <li><a class='<%= check_active('admins') %>' href="/admins"><i class="fas fa-user"></i>Admin</a></li>
+        <li><a data-confirm="Are you sure?" data-method="delete" href="/access/logout" rel="nofollow" class='<%= check_active('inactive') %>' href="#"><i class="fas fa-sign-out-alt"></i>Logout</a></li>
         
+
       </ul>
     </div>
 

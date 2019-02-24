@@ -2,8 +2,17 @@
 $sidebar-width : 250px;
 $primary-color : #613aff;
 $gray : #d3d3d3;
+
 .box{
   border:1px dotted red;
+}
+
+.active{
+  border-left:10px solid $primary-color;
+}
+
+.inactive{
+  border-left:10px solid white;
 }
 
 body{
@@ -69,6 +78,7 @@ html{
 
       &:hover{
         text-decoration: none;
+        border-left:10px solid $primary-color;
         color: white !important;
         background-color: #613aff
       }
@@ -160,5 +170,38 @@ html{
         margin-right: 20px;
       }
     }
+  }
+}
+
+
+body.default{
+  margin: 0 !important;
+  background-color: $primary-color !important
+}
+
+.login{
+  margin: 30px auto !important;
+  width: 100%;
+  max-width: 400px;
+  padding: 40px 20px;
+  border: 1px solid rgb(197, 197, 197);
+  background-color: #e9e3ff !important;
+  img{
+    display: block;
+    margin: 20px auto;
+  }
+  input[type="password"], input[type="text"]{
+    width: 100%;
+    margin-bottom: 5px;
+    border: 1px solid rgb(206, 206, 206);
+    padding: 5px;
+  }
+
+  input[type="submit"]{
+    width: 100% !important;
+    max-width: 100%;
+    margin-top: 20px;
+    background-color: $primary-color;
+    color: white;
   }
 }

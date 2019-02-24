@@ -22,4 +22,12 @@ module ApplicationHelper
       "/images/no-image-icon-11.PNG"
     end
   end
+
+  def check_active(name)
+    if controller_name == name
+      return 'active'
+    else
+      return 'inactive'
+    end
+  end
 end

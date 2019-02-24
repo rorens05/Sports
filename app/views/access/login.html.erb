@@ -1,0 +1,11 @@
+<div class="login">
+  <%= image_tag '/images/logo.png' %>
+  <%= form_tag access_attempt_login_path, method: 'post' do %>
+    <p id="error"><%= flash[:notice] if flash[:notice] %></p>
+    <label for="username">Username</label>
+    <input type="text" name="username">
+    <label for="password">Password</label>
+    <input type="password" name="password">
+    <input type="submit" value="LOGIN">
+  <% end %>
+</div>
