@@ -14,8 +14,7 @@ module Api
           temp = sport.attributes
           temp[:logo] =  url_for(sport.logo)
           sports.push(temp)
-        end
-        
+        end        
         render json: {status: 'success', message: 'sports loaded', data: sports}, status: :ok
       end   
 
@@ -28,10 +27,10 @@ module Api
           if found_user.authenticate(password)
             render json: {status: 'success', message: 'Welcome', user: found_user}, status: :ok
           else
-            render json: {status: 'Failed', message: 'Invalid username password combination'}, status: :unprocessable_entry
+            render json: {status: 'failed', message: 'Invalid username password combination'}, status: :ok
           end
         else
-          render json: {status: 'failed', message: 'Invalid username password combination'}, status: :unprocessable_entry
+          render json: {status: 'failed', message: 'Invalid username password combination'}, status: :ok
         end
       end
     end

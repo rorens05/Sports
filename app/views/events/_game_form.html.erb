@@ -36,6 +36,11 @@
     <%= form.datetime_select :schedule %>
   </div>
 
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Game::STATUS %>
+  </div>
+
   Contestants
   <ul>
     <%= form.fields_for :contestant_teams do |ctf| %>
