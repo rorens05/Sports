@@ -20,6 +20,7 @@ Rails.application.routes.draw do
       get 'editor/teams'
       get 'editor/games'
       post 'editor/new_game'
+      post 'editor/edit_game'
     end
   end
 
