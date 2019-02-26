@@ -12,6 +12,8 @@ class SportsController < ApplicationController
   # GET /sports/1
   # GET /sports/1.json
   def show
+
+    @teams = @sport.teams
   end
 
   # GET /sports/new

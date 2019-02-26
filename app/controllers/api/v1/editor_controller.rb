@@ -74,6 +74,10 @@ module Api
 
         render json: {status: 'success', message: 'teams loaded', data: games}, status: :ok
       end
+
+      def new_game
+        render json: {status: 'success', message: 'events loaded', data: Event.all}, status: :ok
+      end
     end
   end
 end
