@@ -75,6 +75,14 @@ module Api
         render json: {status: 'success', message: 'teams loaded', data: games}, status: :ok
       end
 
+      def get_game
+        game = Game.find(params[:game_id])
+        score1 = game.contestant_teams.first.score
+        score2 = game.contestant_teams.last.score
+        
+        render json: {status: 'success', message: 'teams loaded', data: game, score1: score1, score2: score2}, status: :ok
+      end
+
       def new_game
         name = params[:name]
         event_id = params[:event_id]

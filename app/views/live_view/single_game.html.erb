@@ -1,0 +1,18 @@
+
+<h1><%= @game.event.name + " " + @game.sport.name + " " + @game.name + " (LIVE)" %></h1>
+<div class="row">
+  <div class="col-sm-5 game">
+    <%= image_tag validate_image(@game.contestant_teams.first.team.logo) %>
+    <p class="team-name"><%= @game.contestant_teams.first.team.name %></p>
+    <p class="score" id="score1"><%= @game.contestant_teams.first.score %></p>
+  </div>
+  <div class="col-sm-2 game">
+    <span>VS</span>
+  </div>
+  <div class="col-sm-5 game">
+    <%= image_tag validate_image(@game.contestant_teams.last.team.logo) %>
+    <p class="team-name"><%= @game.contestant_teams.last.team.name %></p>
+    <p class="score " id="score2"><%= @game.contestant_teams.last.score %></p>
+  </div>
+</div>
+<input type="hidden" id="game_id" value="<%= @game.id %>">

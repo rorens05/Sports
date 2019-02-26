@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'live_view/single_game'
   root 'access#login'
   post 'access/attempt_login'
   delete 'access/logout'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       get 'editor/games'
       post 'editor/new_game'
       post 'editor/edit_game'
+      get 'editor/get_game'
     end
   end
 

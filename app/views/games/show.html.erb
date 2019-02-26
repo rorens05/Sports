@@ -45,7 +45,7 @@
 <%= link_to 'Edit', edit_game_path(@game) %> |
 <%= link_to 'Back', games_path %> | 
 <%= link_to 'Destroy', @game, method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<%= link_to 'View Realtime', "#" %>
+<%= link_to 'View Realtime', "/live_view/single_game?game_id=" + @game.id.to_s %>
 
 <hr>
 <h1>Game Players</h1><br>

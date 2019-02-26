@@ -1,0 +1,35 @@
+// Place all the styles related to the LiveView controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.live{
+  background-color: white !important;
+  margin: 0 !important;
+  .game{
+    text-align: center;
+
+    img{
+      width: 26vw;
+      height: 26vw;
+      display: block;
+      margin: 0 auto;
+    }
+    span{
+      display: block;
+      margin-top: 10vw !important;
+      font-size: 10vw;
+    }
+    .team-name{
+      font-size: 3vw;
+      line-height: 4vw;
+    }
+    .score{
+      margin-top: 6vw;
+      font-size: 10vw;
+    }
+  }
+  h1{
+    text-align: center;
+    font-size: 5vw;
+    margin-bottom: 0 !important;
+  }
+}
