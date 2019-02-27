@@ -10,7 +10,7 @@ class AccessController < ApplicationController
     if found_user
       if found_user.authenticate(password)
         session[:id] = found_user.id
-        redirect_to found_user
+        redirect_to events_path
       else
         return_to_login
       end
