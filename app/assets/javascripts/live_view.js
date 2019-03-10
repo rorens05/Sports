@@ -8,7 +8,6 @@ $(document).ready(function(){
       $("#score2").html(data.score2);
     });
   }
-
   setInterval(fetchdata,2000);
-
- });
+ 
+});
