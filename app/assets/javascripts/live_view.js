@@ -6,7 +6,6 @@ $(document).ready(function(){
     $.get("/api/v1/editor/get_game?game_id=" + gameId, function(data, status){
       $("#score1").html(data.score1);
       $("#score2").html(data.score2);
-      
     });
   }
 

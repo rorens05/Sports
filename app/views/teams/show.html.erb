@@ -37,7 +37,7 @@
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.name %></td>
+        <td><%= image_tag validate_image(player.image) %><%= player.name %></td>
         <td><%= player.contact_no %></td>
         <td><%= player.address %></td>
         <td><%= player.school %></td>

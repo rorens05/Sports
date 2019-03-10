@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag validate_image(@player.image),class: 'sports-image-show' %>
+
 <p>
   <strong>Name:</strong>
   <%= @player.name %>
@@ -32,7 +34,7 @@
 
 <p>
   <strong>Team:</strong>
-  <%= @player.team_id %>
+  <%= @player.team.name %>
 </p>
 
 <%= link_to 'Edit', edit_player_path(@player) %> |

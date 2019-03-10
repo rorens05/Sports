@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :statistics
+  get 'live_view/result'
   get 'live_view/single_game'
   root 'access#login'
   post 'access/attempt_login'

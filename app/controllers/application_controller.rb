@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception, unless: -> { request.format.json? }
   before_action :show_console
-  before_action :authenticate_user, except: [:login, :logout, :attempt_login, :single_game]
+  before_action :authenticate_user, except: [:login, :logout, :attempt_login, :single_game, :result]
   before_action :check_user, only: [:login]
 
   def show_console
