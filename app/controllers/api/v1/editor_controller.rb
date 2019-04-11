@@ -9,18 +9,15 @@ module Api
       def sports
         sports = []
         
-        Sport.all.each do |sport|
-          if sport.teams.where(event_id: params[:event_id]).count > 0
-            temp = sport.attributes
-            if sport.logo.attachment
-              temp[:logo] =  url_for(sport.logo)
-            else
-              temp[:logo] = "NA"
-            end
+        sport = Admin.find(params[:admin_id]).sport
+        temp = sport.attributes
+        if sport.logo.attachment
+          temp[:logo] =  url_for(sport.logo)
+        else
+          temp[:logo] = "NA"
+        end
+        sports.push(temp)
 
-            sports.push(temp)
-          end
-        end        
         render json: {status: 'success', message: 'sports loaded', data: sports}, status: :ok
       end  
       
