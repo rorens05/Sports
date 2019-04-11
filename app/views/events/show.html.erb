@@ -36,6 +36,7 @@
                   <%= render partial: '/layouts/render_image', locals: {image: ct.team.logo} %>
                   <p class="team-name"><%= link_to limit_string(ct.team.name, 25), ct.team %> </p><span><%= ct.score %></span>
                 <% else %>
+                  <%= image_tag '/images/no-image-icon-11.PNG' %>
                   <p class="team-name">NO SELECTED TEAM</p><span><%= ct.score %></span>
                 <% end %>                  
                 
