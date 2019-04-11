@@ -1,4 +1,33 @@
 
+
+<marquee width="100%" direction="left" height="30%">
+
+  <div class="clear-fix">
+    <% @games.each do |game| %>
+        <div class="games-container">
+          <div class="teams">
+            <% counter = 1%>
+            <% game.contestant_teams.order("score DESC").each do |ct| %>
+              <div class="team-score <%= counter > 1 ? "lose" : "" %>"> <% counter = counter + 1 %> 
+                <% if ct.team.present? %>
+                  <%= render partial: '/layouts/render_image', locals: {image: ct.team.logo} %>
+                  <p class="team-name"><%= link_to ct.team.name, ct.team %> </p><span><%= ct.score %></span>
+                <% else %>
+                  <%= image_tag '/images/no-image-icon-11.PNG' %>
+                  <p class="team-name">NO SELECTED TEAM</p><span><%= ct.score %></span>
+                <% end %> 
+              </div>
+            <% end %>
+          </div>
+
+          <div class="details">
+            <p class="game-type"><%= link_to game.name, game %></p>
+            <p class="date"><%= format_date(game.schedule) %></p>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</marquee>
 <h1><%= @game.event.name + " " + @game.sport.name + " " + @game.name + " (LIVE)" %></h1>
 <div class="row">
   <div class="col-sm-5 game">

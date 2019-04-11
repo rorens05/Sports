@@ -3,6 +3,7 @@ class LiveViewController < ApplicationController
   def single_game
     if params[:game_id]
       @game = Game.find(params[:game_id])
+      @games = Game.where(event_id: @game.event_id).order("updated_at DESC")
       if @game.blank?
         redirect_to "/404.html"
       end

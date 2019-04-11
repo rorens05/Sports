@@ -3,6 +3,10 @@ module ApplicationHelper
     return time.strftime("%b %e, %Y  %l:%M %p")
   end
 
+  def format_date(time)
+    return time.strftime("%b %e, %Y")
+  end
+
   def display_winner(rank)
     if rank == 1
       return rank.to_s + " (Winner)"
