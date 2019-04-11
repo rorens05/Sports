@@ -67,9 +67,9 @@
       </tr>
     <% else %>
       <tr>
-        <td><span style="color: gray">DELETED</span></td>
-        <td><%= @contestants[x].score %></td>
-        <td><%= display_winner(@ranks[x]) %></td>
+        <td><span style="color: gray">NO SELECTED TEAM</span></td>
+        <td><%# @contestants[x].score %></td>
+        <td><%# display_winner(@ranks[x]) %></td>
       </tr>
     <% end %>
   <% end %>
@@ -80,33 +80,37 @@
 <div class="row">
   <% @contestants.each do |contestant| %>
     
-    <div class="col-sm-6"><br>
-      <h3><%= contestant.team.name %> Statistics</h3>
+    <% if contestant.team %>
+        
+      <div class="col-sm-6"><br>
+        <h3><%= contestant.team.name %> Statistics</h3>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Player</th>
-            <th>Details</th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% contestant.statistics.each do |statistic| %>
+        <table>
+          <thead>
             <tr>
-              <td><%= image_tag validate_image(statistic.player.image) %><%= statistic.player.name %></td>
-              <td><pre><%= statistic.details %></pre></td>
-              <td><%= link_to 'Delete', statistic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th>Player</th>
+              <th>Details</th>
+              <th></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-      
-      <% new_statistic_1 = Statistic.new %>
-      <% new_statistic_1.contestant_team = contestant %>
-      <br>
-      <%= render 'new_statistics', statistic: new_statistic_1%>
-    </div>
+          </thead>
+
+          <tbody>
+            <% contestant.statistics.each do |statistic| %>
+              <tr>
+                <td><%= image_tag validate_image(statistic.player.image) %><%= statistic.player.name %></td>
+                <td><pre><%= statistic.details %></pre></td>
+                <td><%= link_to 'Delete', statistic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        
+        <% new_statistic_1 = Statistic.new %>
+        <% new_statistic_1.contestant_team = contestant %>
+        <br>
+        <%= render 'new_statistics', statistic: new_statistic_1%>
+      </div>
+    <% end %>
+    
   <% end %>
 </div>

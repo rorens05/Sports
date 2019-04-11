@@ -46,7 +46,7 @@
     <%= form.fields_for :contestant_teams do |ctf| %>
       <li>
         <%= ctf.label :team_id %>
-        <%= ctf.select :team_id, options_from_collection_for_select(Team.where(event_id: form.object.event_id), 'id', 'name', ctf.object.team_id || 1) %>
+        <%= ctf.select :team_id, options_from_collection_for_select(Team.where(event_id: form.object.event_id), 'id', 'name', ctf.object.team_id || 1), :include_blank => true %>
         <%= ctf.label :score %>
         <%= ctf.text_field :score %>
       </li>
