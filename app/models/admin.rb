@@ -5,4 +5,5 @@ class Admin < ApplicationRecord
   USER_TYPES = [ "admin", "editor" ]
   validates :user_type, inclusion: USER_TYPES
   
+  belongs_to :sport, optional: :true
 end

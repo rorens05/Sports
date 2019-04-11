@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :sport_id %>
+    <%= form.select :sport_id, options_from_collection_for_select(Sport.all, 'id', 'name', form.object.sport_id), include_blank: true %>
+  </div>
+
+  <div class="field">
     <%= form.label :password %>
     <%= form.password_field :password %>
   </div>
