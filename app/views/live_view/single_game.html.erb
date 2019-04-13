@@ -44,4 +44,45 @@
     <p class="score " id="score2"><%= @game.contestant_teams.last.score %></p>
   </div>
 </div>
-<input type="hidden" id="game_id" value="<%= @game.id %>">
+<input type="hidden" id="game_id" value="<%= @game.id %>"><br>
+
+
+  <div class="row">
+    <% @contestants.each do |contestant| %>
+      
+      <div class="col-sm-6"><br>
+        <div class="container">
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Player</th>
+                <th>Details</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% contestant.statistics.each do |statistic| %>
+                <tr>
+                  <td style="width: 350px;">
+                    <h4>
+                        <%= image_tag validate_image(statistic.player.image), class: "table-image" %>
+                        <%= statistic.player.name %>
+                    </h4>
+                    
+                  </td>
+                  <td><pre><%= statistic.details %></pre></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+
+        </div>
+        
+        <% new_statistic_1 = Statistic.new %>
+        <% new_statistic_1.contestant_team = contestant %>
+        <br>
+      </div>
+    <% end %>
+  </div>

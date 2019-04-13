@@ -4,6 +4,8 @@ class LiveViewController < ApplicationController
     if params[:game_id]
       @game = Game.find(params[:game_id])
       @games = Game.where(event_id: @game.event_id).order("updated_at DESC")
+      @contestants = ContestantTeam.where(game_id: @game.id)
+
       if @game.blank?
         redirect_to "/404.html"
       end

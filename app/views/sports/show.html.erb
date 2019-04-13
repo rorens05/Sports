@@ -27,14 +27,16 @@
   </thead>
 
   <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= render partial: 'layouts/render_image', locals: {image: team.logo} %><%= link_to team.name, team %></td>
-        <td><%= link_to team.sport.name, team.sport %></td>
-        <td><%= link_to team.event.name, team.event %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% @teams.each do |team| %>      
+      <% if team %>
+        <tr> 
+          <td><%= render partial: 'layouts/render_image', locals: {image: team.logo} %><%= link_to team.name, team %></td>
+          <td><%= link_to team.sport.name, team.sport %></td>
+          <td><%= link_to team.event.name, team.event %></td>
+          <td><%= link_to 'Edit', edit_team_path(team) %></td>
+          <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>      
     <% end %>
   </tbody>
 </table>
