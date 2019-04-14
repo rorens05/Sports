@@ -1,0 +1,3 @@
+$('.marquee').marquee({
+  direction: 'left'
+});
