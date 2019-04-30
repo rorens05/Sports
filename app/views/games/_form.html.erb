@@ -41,6 +41,11 @@
     <%= form.select :status, Game::STATUS %>
   </div>
 
+  <div class="field">
+    <%= form.label :quarter %>
+    <%= form.select :quarter, Game::QUARTER %>
+  </div>
+
   Contestants
   <ul>
     <%= form.fields_for :contestant_teams do |ctf| %>

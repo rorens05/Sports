@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_221245) do
+ActiveRecord::Schema.define(version: 2019_04_30_111150) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_04_11_221245) do
     t.string "status"
     t.integer "last_updated_by_id"
     t.integer "created_by_id"
+    t.string "quarter"
   end
 
   create_table "players", force: :cascade do |t|
@@ -100,6 +101,11 @@ ActiveRecord::Schema.define(version: 2019_04_11_221245) do
     t.text "details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "isPlaying"
+    t.integer "points"
+    t.integer "assists"
+    t.integer "rebound"
+    t.integer "foul"
     t.index ["contestant_team_id"], name: "index_statistics_on_contestant_team_id"
     t.index ["player_id"], name: "index_statistics_on_player_id"
   end

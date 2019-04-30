@@ -25,6 +25,16 @@ Rails.application.routes.draw do
       post 'editor/new_game'
       post 'editor/edit_game'
       get 'editor/get_game'
+      post 'editor/add_points'
+      post 'editor/sub_points'
+      post 'editor/add_assist'
+      post 'editor/sub_assist'
+      post 'editor/add_foul'
+      post 'editor/sub_foul'
+      post 'editor/add_rebound'
+      post 'editor/sub_rebound'
+      post 'editor/update_is_playing'
+      get 'editor/get_players'
     end
   end
 

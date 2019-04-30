@@ -29,6 +29,11 @@
 </p>
 
 <p>
+  <strong>Quarter:</strong>
+  <%= @game.quarter %>
+</p>
+
+<p>
   <strong>Created by:</strong>
   <% if @game.created_by %>
     <%= @game.created_by.username %>
@@ -89,16 +94,50 @@
           <thead>
             <tr>
               <th>Player</th>
-              <th>Details</th>
+              <th class="details-data">Points</th>
+              <th class="details-data">Assists</th>
+              <th class="details-data">Fouls</th>
+              <th class="details-data">Rebounds</th>
+              <th class="details-data">Playing</th>
               <th></th>
             </tr>
           </thead>
 
           <tbody>
-            <% contestant.statistics.each do |statistic| %>
+            <% contestant.statistics.order("id").each do |statistic| %>
               <tr>
                 <td><%= image_tag validate_image(statistic.player.image) %><%= statistic.player.name %></td>
-                <td><pre><%= statistic.details %></pre></td>
+                <td class="details-data"> 
+                  <button class="btn-add-points">+</button>
+                  <input type="hidden" class="id" value="<%= statistic.id %>" />
+                  <span class="statistics-details"><%= statistic.points %></span>
+                  <button class="btn-sub-points">-</button>
+                </td>
+                <td class="details-data">
+                  <button class="btn-add-assist">+</button>
+                  <input type="hidden" class="id" value="<%= statistic.id %>" />
+                  <span class="statistics-details"><%= statistic.assists %></span>
+                  <button class="btn-sub-assist">-</button>
+                </td>
+                <td class="details-data">
+                  <button class="btn-add-foul">+</button>
+                  <input type="hidden" class="id" value="<%= statistic.id %>" />
+                  <span class="statistics-details"><%= statistic.foul %></span>
+                  <button class="btn-sub-foul">-</button>
+                </td>
+                <td class="details-data">
+                  <button class="btn-add-rebound">+</button>
+                  <input type="hidden" class="id" value="<%= statistic.id %>" />
+                  <span class="statistics-details"><%= statistic.rebound %></span>
+                  <button class="btn-sub-rebound">-</button>
+                </td>
+                <td>
+                  <input type="hidden" class="id" value="<%= statistic.id %>" />
+                  <input class="playingChecked" type="checkbox" 
+                  <% if statistic.isPlaying %>
+                    checked
+                  <% end %>
+                ></td>
                 <td><%= link_to 'Delete', statistic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>

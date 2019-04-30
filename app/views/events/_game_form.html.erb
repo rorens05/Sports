@@ -27,11 +27,6 @@
   </div>
 
   <div class="field">
-    <%= form.label :sport_id %>
-    <%= form.select :sport_id, options_from_collection_for_select(Sport.all, 'id', 'name', form.object.sport ? form.object.sport.id : 1) %>
-  </div>
-
-  <div class="field">
     <%= form.label :schedule %>
     <%= form.datetime_select :schedule %>
   </div>

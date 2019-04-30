@@ -42,6 +42,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(game_params)
+    @game.sport_id = 1
     @game.created_by_id = session['id']
     @game.last_updated_by_id = session['id']
     respond_to do |format|
@@ -90,6 +91,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:name, :game_type, :sport_id, :schedule, :status, :event_id, contestant_teams_attributes: [:id, :team_id, :score])
+      params.require(:game).permit(:name, :game_type, :sport_id, :schedule, :status, :quarter, :event_id, contestant_teams_attributes: [:id, :team_id, :score])
     end
 end

@@ -6,6 +6,136 @@ module Api
       protect_from_forgery with: :null_session
       skip_before_action :authenticate_user
 
+      def update_is_playing
+        statistic = Statistic.find(params[:id])
+        statistic.isPlaying = !statistic.isPlaying
+        if statistic.save
+          render json: {status: 'success', message: "isplaying updated"}, status: :ok
+        else
+          render json: {status: 'success', message: "isplaying not updated"}, status: :ok
+        end
+      end
+
+      def get_players
+        game = Game.find(params[:game_id])
+        temp = game.contestant_teams.first.statistics
+        first = []
+        temp.each do |t|
+          if t.isPlaying
+            h_t = t.attributes
+            h_t[:name] = t.player.name
+            h_t[:image] = url_for(t.player.image)
+            first << h_t
+          end
+        end
+
+        temp = game.contestant_teams.last.statistics
+        second = []
+        temp.each do |t|
+          if t.isPlaying
+            h_t = t.attributes
+            h_t[:name] = t.player.name
+            h_t[:image] = url_for(t.player.image)
+            second << h_t
+          end
+        end
+        render json: {status: 'success', message: "sucess", first: first, second: second}, status: :ok
+      end
+
+      def sub_rebound
+        statistic = Statistic.find(params[:id])
+        statistic.rebound = statistic.rebound - 1
+        if statistic.save
+          render json: {status: 'success', message: "foul subtracted "}, status: :ok
+        else
+          render json: {status: 'success', message: "foul not updated"}, status: :ok
+        end
+      end
+
+      def add_rebound
+        statistic = Statistic.find(params[:id])
+        statistic.rebound = statistic.rebound + 1
+        if statistic.save
+          render json: {status: 'success', message: "foul added "}, status: :ok
+        else
+          render json: {status: 'success', message: "foul not updated"}, status: :ok
+        end
+      end
+
+      def sub_foul
+        statistic = Statistic.find(params[:id])
+        statistic.foul = statistic.foul - 1
+        if statistic.save
+          render json: {status: 'success', message: "foul subtracted "}, status: :ok
+        else
+          render json: {status: 'success', message: "foul not updated"}, status: :ok
+        end
+      end
+
+      def add_foul
+        statistic = Statistic.find(params[:id])
+        statistic.foul = statistic.foul + 1
+        if statistic.save
+          render json: {status: 'success', message: "foul added "}, status: :ok
+        else
+          render json: {status: 'success', message: "foul not updated"}, status: :ok
+        end
+      end
+
+      def sub_assist
+        statistic = Statistic.find(params[:id])
+        statistic.assists = statistic.assists - 1
+        if statistic.save
+          render json: {status: 'success', message: "assist subtracted "}, status: :ok
+        else
+          render json: {status: 'success', message: "assist not updated"}, status: :ok
+        end
+      end
+
+      def add_assist
+        statistic = Statistic.find(params[:id])
+        statistic.assists = statistic.assists + 1
+        if statistic.save
+          render json: {status: 'success', message: "assist added "}, status: :ok
+        else
+          render json: {status: 'success', message: "assist not updated"}, status: :ok
+        end
+      end
+
+      def add_points
+        statistic = Statistic.find(params[:id])
+        statistic.points = statistic.points + 1
+        if statistic.save
+          c = statistic.contestant_team
+          score = 0;
+          c.statistics.each do |s|
+            score = score + s.points
+          end
+          c.score = score
+          c.save
+          render json: {status: 'success', message: "score added "}, status: :ok
+        else
+          render json: {status: 'success', message: "score not updated"}, status: :ok
+        end
+      end
+
+      def sub_points
+        statistic = Statistic.find(params[:id])
+        statistic.points = statistic.points - 1
+        if statistic.save
+          c = statistic.contestant_team
+          score = 0;
+          c.statistics.each do |s|
+            score = score + s.points
+          end
+          c.score = score
+          c.save
+          render json: {status: 'success', message: "score subtracted "}, status: :ok
+        else
+          render json: {status: 'success', message: "score not updated"}, status: :ok
+        end
+      end
+
       def sports
         sports = []
         
@@ -156,8 +286,7 @@ module Api
           render json: {status: 'success', message: 'Game updated'}, status: :ok
         else
           render json: {status: 'failed', message: game.errors.full_messages}, status: :ok
-        end
-        
+        end        
       end
 
       

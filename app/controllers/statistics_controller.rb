@@ -25,7 +25,12 @@ class StatisticsController < ApplicationController
   # POST /statistics.json
   def create
     @statistic = Statistic.new(statistic_params)
-
+    @statistic.points = 0
+    @statistic.assists = 0
+    @statistic.rebound = 0
+    @statistic.foul = 0
+    @statistic.isPlaying = false
+    
     respond_to do |format|
       if @statistic.save
         format.html { redirect_to @statistic.contestant_team.game, notice: 'Statistic was successfully created.' }
